@@ -1,0 +1,441 @@
+/* 改变主题色变量 */
+$--color-primary: #409EFF !default;
+$--color-white: #ffffff;
+$--color-green: #09BBA1;
+$--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
+$--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
+$--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default; /* 79bbff */
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default; /* 8cc5ff */
+$--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
+$--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /* b3d8ff */
+$--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
+$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
+$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
+
+$--color-success: #2bbb59 !default;
+$--color-warning: #FF9D2A !default;
+$--color-danger: #f56c6c !default;
+$--color-info: #909399 !default;
+$--color-black: #333333 !default;
+$--color-gray: #999999 !default;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+body, html {
+  background:rgba(244,244,244,0.98) !important;
+  min-width: 1400px;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  #app {
+    height: 100%;
+  }
+}
+.main {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.container {
+  width: 1360px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+ul li {
+  list-style: none;
+}
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// reset element-ui css
+.el-tooltip__popper {
+  max-height: 500px !important;
+  overflow-y: hidden;
+  max-width: 240px !important;
+}
+.el-image-viewer__close {
+  color: white !important;
+}
+.has-gutter {
+  th {
+    background-color: #f5f7fa !important;
+    color: #606266;
+  }
+}
+.el-table {
+  .el-button--text {
+    padding: 0;
+  }
+}
+.horizontal-collapse-transition {
+  transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out !important;
+}
+
+// 自定义滚动条样式
+.scrollbar {
+  .el-scrollbar {
+    .el-scrollbar__wrap {
+      overflow-x: hidden;
+    }
+    &::-webkit-scrollbar-track-piece { //滚动条凹槽的颜色，还可以设置边框属性
+      background-color: #f8f8f8;
+    }
+
+    &::-webkit-scrollbar { // 滚动条整体样式
+      width: 4px;     // 高宽分别对应横竖滚动条的尺寸
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb { // 滚动条里面小方块
+      border-radius: 10px;
+      background: #ccc;
+    }
+
+    &::-webkit-scrollbar-track { // 滚动条里面轨道
+      border-radius: 10px;
+    }
+  }
+}
+@import "~element-ui/packages/theme-chalk/src/index";
+
+$colors: (primary,$--color-primary),
+        (white,$--color-white),
+        (black,$--color-black),
+        (green,$--color-green),
+        (gray,$--color-gray),
+        (success,$--color-success),
+        (warning,$--color-warning),
+        (danger,$--color-danger),
+        (info,$--color-info);
+/* ----------------------------------------------------------------
+  Color
+----------------------------------------------------------------- */
+@each $name,$color in  $colors {
+  .color-#{$name} {
+    color: $color !important;
+  }
+}
+
+@each $name,$color in  $colors {
+  .bc-#{$name} {
+    background-color: $color !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+  Border
+----------------------------------------------------------------- */
+@for $i from 0 through 20 {
+  .br-#{$i} {
+    border-radius: $i + px !important;
+  }
+}
+/* ----------------------------------------------------------------
+  Box-sizing
+----------------------------------------------------------------- */
+@each $sizing in  unset, border-box, content-box {
+  .bs-#{$sizing} {
+    box-sizing: $sizing !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+  Cursor
+----------------------------------------------------------------- */
+@each $cursor in  default, pointer, move {
+  .cursor-#{$cursor} {
+    cursor: $cursor !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+  Display
+----------------------------------------------------------------- */
+@each $display in  block, none, inline, inline-block, flex,inline-flex {
+  .display-#{$display} {
+    display: $display !important;
+  }
+}
+/* ----------------------------------------------------------------
+  Flex
+----------------------------------------------------------------- */
+// 项目的排列方向
+@each $direction in row, row-reverse, column, column-reverse{
+  .fd-#{$direction} {
+    flex-direction: $direction !important;
+  }
+}
+// 项目在主轴上的对齐方式
+@each $position in flex-start, flex-end, center, space-between, space-around {
+  .jc-#{$position} {
+    justify-content: $position !important;
+  }
+}
+// 占比
+@for $i from 1 through 11 {
+  .flex-#{$i} {
+    flex: $i !important;
+  }
+}
+// 轴线排列 换行
+@each $nowrap in nowrap, wrap, wrap-reverse {
+  .fw-#{$nowrap} {
+    flex-wrap: $nowrap !important;
+  }
+}
+// 项目在交叉轴上对齐方式
+@each $position in flex-start, flex-end, center, baseline, stretch {
+  .ai-#{$position} {
+    align-items: $position !important;
+  }
+}
+/* ----------------------------------------------------------------
+  Float
+----------------------------------------------------------------- */
+.float-right{
+  float: right !important;
+}
+.float-left{
+  float: left !important;
+}
+.float-none {
+  float: none !important;
+}
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: "";
+}
+
+.clearfix::after {
+  clear: both;
+}
+/* ----------------------------------------------------------------
+  List
+----------------------------------------------------------------- */
+ol,
+ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin-bottom: 0;
+}
+
+ul ol,
+ul ul {
+  list-style-type: circle;
+}
+
+.list-unstyled {
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.list-inline {
+  padding-left: 0 !important;
+  margin-left: -5px !important;
+  list-style: none !important;
+}
+/* ----------------------------------------------------------------
+  Position
+----------------------------------------------------------------- */
+@each $position in relative, absolute, fixed, static, inherit {
+  .position-#{$position} {
+    position: $position;
+  }
+}
+@for $i from 0 through 20{
+  .top-#{$i}{
+    top: $i + px;
+  }
+  .right-#{$i}{
+    right: $i + px;
+  }
+  .bottom-#{$i}{
+    bottom: $i + px;
+  }
+  .left-#{$i}{
+    left: $i + px;
+  }
+}
+@for $i from 1 through 10{
+  .top-percent-#{$i}{
+    top: 10% * $i;
+  }
+  .right-percent-#{$i}{
+    right: 10% * $i;
+  }
+  .bottom-percent-#{$i}{
+    bottom: 10% * $i;
+  }
+  .left-percent-#{$i}{
+    left: 10% * $i;
+  }
+}
+/* ----------------------------------------------------------------
+  Sizing
+----------------------------------------------------------------- */
+@for $i from 1 through 20{
+  .width-percent-#{$i * 5}{
+    width: 5 * 1% * $i !important;
+  }
+}
+@for $i from 0 through 20 {
+  .width-#{$i * 10}{
+    width: 10px * $i !important;
+  }
+}
+@for $i from 1 through 20{
+  .height-percent-#{$i * 5}{
+    height: 5 * 1% * $i;
+  }
+}
+@for $i from 0 through 20 {
+  .height-#{$i * 10} {
+    height: 10px * $i !important;
+  }
+}
+@for $i from 1 through 50 {
+  .lh-#{$i} {
+    line-height: 1px * $i !important;
+  }
+}
+/* ----------------------------------------------------------------
+  Spacing
+----------------------------------------------------------------- */
+@for $i from 0 through 15 {
+  .margin-#{$i * 2} {
+    margin: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .mt-#{$i * 2} {
+    margin-top: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .mb-#{$i * 2} {
+    margin-bottom: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .ml-#{$i *2 } {
+    margin-left: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .mr-#{$i * 2} {
+    margin-right: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .padding-#{$i * 2} {
+    padding: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .pt-#{$i * 2 } {
+    padding-top:  2 * $i + px !important;
+  }
+}
+@for $i from 0 through 15 {
+  .pb-#{$i * 2 } {
+    padding-bottom: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 20 {
+  .pl-#{$i * 2 } {
+    padding-left: 2 * $i + px !important;
+  }
+}
+@for $i from 0 through 20 {
+  .pr-#{$i *2 } {
+    padding-right: 2 * $i + px !important;
+  }
+}
+.mr-auto{
+  margin-right: auto !important;
+}
+.ml-auto{
+  margin-left: auto !important;
+}
+/* ----------------------------------------------------------------
+  Text
+----------------------------------------------------------------- */
+@each $align in center, left, right, justify {
+  .ta-#{$align} {
+    text-align: $align !important;
+  }
+}
+@for $i from 6 through 18 {
+  .fs-#{$i * 2} {
+    font-size: 2 * $i + px !important;
+  }
+}
+.fw-bolder {
+  font-weight: bolder;
+}
+.fw-normal {
+  font-weight: normal;
+}
+/* ----------------------------------------------------------------
+  Vertical alignment
+----------------------------------------------------------------- */
+@each $align in baseline,top,middle,bottom,text-top,text-bottom {
+  .va-#{$align} {
+    vertical-align: $align !important;
+  }
+}
+/* ----------------------------------------------------------------
+  Visibility
+----------------------------------------------------------------- */
+.visibility-visible {
+  visibility: visible !important;
+}
+.visibility-hidden {
+  visibility: hidden !important;
+}
+
+/* ----------------------------------------------------------------
+  Z-index
+----------------------------------------------------------------- */
+@for $i from 0 through 20 {
+  .zi-#{$i} {
+    z-index: $i !important;
+  }
+}
+.nav{
+  color: #333333;
+  font-size: 16px;
+  cursor: pointer;
+  i{
+    margin-right: 16px;
+  }
+}
+.button {
+  cursor: pointer;
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  background: #3BBBA1;
+  border-radius: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-right: 10px;
+  &:hover{
+    background: #48D1CC;
+    border-color: #48D1CC;
+    color: #fff;
+  }
+}
